@@ -148,20 +148,36 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'onedark'
-  --   end,
-  -- },
+  {
+    --'jdkanani/vim-material-theme',
+    --priority = 1000,
+    --config = function()
+    --  vim.cmd.colorscheme 'material-theme'
+    --end,
+  },
 
   {
-    "lmburns/kimbox",
+    'junegunn/seoul256.vim',
+    priority = 1000,
     config = function()
-      vim.cmd("colorscheme kimbox")
+      vim.cmd.colorscheme 'seoul256'
     end,
+  },
+
+  {
+    --'morhetz/gruvbox',
+    --priority = 1000,
+    --config = function()
+    --  vim.cmd.colorscheme 'gruvbox'
+    --end,
+  },
+
+  {
+    --"lmburns/kimbox",
+    --priority = 1000,
+    --config = function()
+    -- vim.cmd.colorscheme 'kimbox'
+    --end,
   },
 
   {
@@ -189,6 +205,8 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+
+  { 'github/copilot.vim' },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -235,8 +253,11 @@ require('lazy').setup({
 -- set line # on left to relative
 vim.o.relativenumber = true
 
--- Set highlight on search
-vim.o.hlsearch = false
+-- see line # instead of 0 at current line
+vim.wo.number = true
+
+-- Set highlight on search (:noh removes hl)
+-- vim.o.hlsearch = false
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -270,6 +291,18 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
+
+-- Copilot
+vim.keymap.set('i', '<C-]>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+vim.keymap.set('i', '<C-(>', 'copilot#Cancel()', {
+  expr = true,
+  replace_keycodes = true
+})
+
+vim.g.copilot_no_tab_map = true
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -614,6 +647,45 @@ cmp.setup {
     { name = 'path' },
   },
 }
+
+-- copy to ftp server if you're in wms dev directory
+local function syncIcomToDev()
+  local currentDir = vim.fn.expand('%:p')
+
+  local remoteDir = "/home/slava/life/remotes/wms-dev/wwwroot"
+  local localDir = "/home/slava/Documents/repos/WMS-PROD"
+
+  local localRoot = string.sub(currentDir, 0, string.len(localDir))
+  local localPath = string.sub(currentDir, string.len(localDir) + 1)
+
+  if localRoot == localDir then
+    local cpCmd = "cp " .. currentDir .. " " .. remoteDir .. localPath
+    -- start a job asynchronously
+    local handle_stdout = function(job_id, data, event)
+      -- show success
+      print("Success " .. currentDir .. " -> " .. remoteDir .. localPath)
+    end
+
+    local handle_stderr = function(job_id, data, event)
+      print("ERROR uploading")
+    end
+
+    local handle_exit = function(job_id, exit_code, event)
+      if exit_code == 0 then
+        print("Success " .. currentDir .. "/" .. localPath .. " -> " .. remoteDir)
+      else
+        print("ERROR uploading " .. currentDir .. "/" .. localPath .. " -> " .. remoteDir)
+      end
+    end
+
+    vim.fn.jobstart(cpCmd, { on_stdout = handle_stdout, on_stderr = handle_stderr, on_exit = handle_exit })
+  end
+end
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*",
+  callback = syncIcomToDev
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
