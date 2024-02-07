@@ -653,7 +653,7 @@ local function syncIcomToDev()
   local currentDir = vim.fn.expand('%:p')
 
   local remoteDir = "/home/slava/life/remotes/wms-dev/wwwroot"
-  local localDir = "/home/slava/Documents/repos/WMS-PROD"
+  local localDir = "/home/slava/life/repos/wms-prod"
 
   local localRoot = string.sub(currentDir, 0, string.len(localDir))
   local localPath = string.sub(currentDir, string.len(localDir) + 1)
