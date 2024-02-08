@@ -678,6 +678,8 @@ local function syncIcomToDev()
       end
     end
 
+    -- TODO: If directory does not exist create it!
+
     vim.fn.jobstart(cpCmd, { on_stdout = handle_stdout, on_stderr = handle_stderr, on_exit = handle_exit })
   end
 end
