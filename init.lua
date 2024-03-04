@@ -148,13 +148,24 @@ require('lazy').setup({
     },
   },
 
-  {
-    --'jdkanani/vim-material-theme',
-    --priority = 1000,
-    --config = function()
-    --  vim.cmd.colorscheme 'material-theme'
-    --end,
-  },
+  -- {
+  --   'jdkanani/vim-material-theme',
+  --   priority = 1000,
+  --   config = function()
+  --    vim.cmd.colorscheme 'material-theme'
+  --   end,
+  -- },
+
+  -- ai colors !?
+  -- {
+  --   'sveremeulen/text-to-colorscheme.nvim',
+  --   ai = {
+  --     openai_api_key = "",
+  --   },
+  --   config = function()
+  --     vim.cmd.colorscheme 'text-to-colorscheme'
+  --   end,
+  -- },
 
   {
     'junegunn/seoul256.vim',
@@ -164,21 +175,21 @@ require('lazy').setup({
     end,
   },
 
-  {
-    --'morhetz/gruvbox',
-    --priority = 1000,
-    --config = function()
-    --  vim.cmd.colorscheme 'gruvbox'
-    --end,
-  },
+  -- {
+  --'morhetz/gruvbox',
+  --priority = 1000,
+  --config = function()
+  --  vim.cmd.colorscheme 'gruvbox'
+  --end,
+  -- },
 
-  {
-    --"lmburns/kimbox",
-    --priority = 1000,
-    --config = function()
-    -- vim.cmd.colorscheme 'kimbox'
-    --end,
-  },
+  -- {
+  --"lmburns/kimbox",
+  --priority = 1000,
+  --config = function()
+  -- vim.cmd.colorscheme 'kimbox'
+  --end,
+  -- },
 
   {
     -- Set lualine as statusline
