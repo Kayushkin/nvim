@@ -176,19 +176,19 @@ require('lazy').setup({
   },
 
   -- {
-  --'morhetz/gruvbox',
-  --priority = 1000,
-  --config = function()
-  --  vim.cmd.colorscheme 'gruvbox'
-  --end,
+  --   'morhetz/gruvbox',
+  --   priority = 1000,
+  --   config = function()
+  --    vim.cmd.colorscheme 'gruvbox'
+  --   end,
   -- },
 
   -- {
-  --"lmburns/kimbox",
-  --priority = 1000,
-  --config = function()
-  -- vim.cmd.colorscheme 'kimbox'
-  --end,
+  --   "lmburns/kimbox",
+  --   priority = 1000,
+  --   config = function()
+  --   vim.cmd.colorscheme 'kimbox'
+  --   end,
   -- },
 
   {
