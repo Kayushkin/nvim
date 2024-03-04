@@ -151,9 +151,9 @@ require('lazy').setup({
   {
     'svermeulen/text-to-colorscheme',
     priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'text-to-colorscheme'
-    end,
+    -- config = function()
+    --   vim.cmd.colorscheme 'text-to-colorscheme'
+    -- end,
   },
 
   -- {
@@ -164,21 +164,21 @@ require('lazy').setup({
   --   end,
   -- },
 
-  -- {
-  --   'junegunn/seoul256.vim',
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme 'seoul256'
-  --   end,
-  -- },
+  {
+    'junegunn/seoul256.vim',
+    -- priority = 1000,
+    -- config = function()
+    --   vim.cmd.colorscheme 'seoul256'
+    -- end,
+  },
 
-  -- {
-  --   'morhetz/gruvbox',
-  --   priority = 1000,
-  --   config = function()
-  --    vim.cmd.colorscheme 'gruvbox'
-  --   end,
-  -- },
+  {
+    'morhetz/gruvbox',
+    -- priority = 1000,
+    -- config = function()
+    --  vim.cmd.colorscheme 'gruvbox'
+    -- end,
+  },
 
   -- {
   --   "lmburns/kimbox",
@@ -342,7 +342,26 @@ require('text-to-colorscheme').setup {
   ai = {
     openai_api_key = os.getenv("OPENAI_API_KEY"),
   },
+  hex_palettes = {
+    {
+      name = "dark brown japanese",
+      background_mode = "dark",
+      background = "#2b1d0e",
+      foreground = "#f5deb3",
+      accents = {
+        "#d2691e",
+        "#914814",
+        "#cd853f",
+        "#f4a460",
+        "#deb887",
+        "#d2b48c",
+        "#bc8f8f",
+      }
+    }
+  },
+  default_palette = "dark brown japanese",
 }
+vim.cmd.colorscheme 'text-to-colorscheme'
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
