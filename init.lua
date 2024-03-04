@@ -148,6 +148,14 @@ require('lazy').setup({
     },
   },
 
+  {
+    'svermeulen/text-to-colorscheme',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'text-to-colorscheme'
+    end,
+  },
+
   -- {
   --   'jdkanani/vim-material-theme',
   --   priority = 1000,
@@ -156,24 +164,13 @@ require('lazy').setup({
   --   end,
   -- },
 
-  -- ai colors !?
   -- {
-  --   'sveremeulen/text-to-colorscheme.nvim',
-  --   ai = {
-  --     openai_api_key = "",
-  --   },
+  --   'junegunn/seoul256.vim',
+  --   priority = 1000,
   --   config = function()
-  --     vim.cmd.colorscheme 'text-to-colorscheme'
+  --     vim.cmd.colorscheme 'seoul256'
   --   end,
   -- },
-
-  {
-    'junegunn/seoul256.vim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'seoul256'
-    end,
-  },
 
   -- {
   --   'morhetz/gruvbox',
@@ -339,6 +336,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- ai colors !?
+require('text-to-colorscheme').setup {
+  ai = {
+    openai_api_key = os.getenv("OPENAI_API_KEY"),
+  },
+}
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
