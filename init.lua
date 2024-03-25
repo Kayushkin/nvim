@@ -15,6 +15,13 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.opt.scrolloff = 10
+
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -41,9 +48,9 @@ require('lazy').setup({
   {
     'tamton-aquib/duck.nvim',
     config = function()
-      vim.keymap.set('n', '<leader>dd', function() require("duck").hatch() end, {})
-      vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
-      vim.keymap.set('n', '<leader>da', function() require("duck").cook_all() end, {})
+      vim.keymap.set('n', '<leader>dk', function() require("duck").hatch() end, {})
+      vim.keymap.set('n', '<leader>da', function() require("duck").cook() end, {})
+      vim.keymap.set('n', '<leader>dd', function() require("duck").cook_all() end, {})
     end
   },
 
