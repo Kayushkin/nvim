@@ -8,7 +8,7 @@ return {
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
         javascript = { 'eslint' },
-        typescript = { 'eslint' },
+        -- typescript = { 'eslint' },
         rst = { 'vale' },
         json = { 'jsonlint' },
         dockerfile = { 'hadolint' },

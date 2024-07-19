@@ -13,8 +13,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
 vim.opt.updatetime = 250
--- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+-- For which-key popup
+vim.opt.timeoutlen = 1000
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
@@ -321,7 +321,7 @@ require('lazy').setup({
         pyright = {},
         rust_analyzer = {},
         kotlin_language_server = {},
-        tsserver = {},
+        -- tsserver = {},
         html = {},
         svelte = {},
         java_language_server = {},
@@ -333,9 +333,9 @@ require('lazy').setup({
         tailwindcss = {},
         -- cmake = {},
         -- docker_compose_language_server = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         texlab = {},
         -- texlsp = {},
+        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
         lua_ls = {
           -- cmd = {...},
@@ -418,7 +418,7 @@ require('lazy').setup({
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         javascript = { 'eslint' },
-        typescript = { 'eslint' },
+        -- typescript = { 'eslint' },
       },
     },
   },
